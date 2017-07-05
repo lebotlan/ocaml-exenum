@@ -1,0 +1,9 @@
+(jbuild_version 1)
+
+(library
+ ((name        exenum)
+  (public_name exenum)
+  (libraries (exenum_internals))))
+  
+
+

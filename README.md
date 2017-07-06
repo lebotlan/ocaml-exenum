@@ -1,6 +1,6 @@
 # ocaml-exenum
 
-exenum is an OCaml library that helps building exhaustive or semi-exhaustive data sets, typically for intensive unit testing.
+exenum is an **OCaml library** that helps building exhaustive or semi-exhaustive data sets, typically for intensive unit testing.
 
 ## Install
 

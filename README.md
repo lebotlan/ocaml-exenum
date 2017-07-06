@@ -24,9 +24,7 @@ let enum_intlist = e_list e_int
 * Because pretty-printing matters, we take the time to define string_of_intlist:
 ```ocaml
 (* Helper function that builds a string from a list of items *)
-let sep map sp l = List.fold_left (fun acu x -> if acu = "" then map x else acu ^ sp ^ (map x)) "" l
-
-let string_of_intlist l = "[" ^ (sep string_of_int ", " l) ^ "]"
+let string_of_intlist l = "[" ^ String.concat ", " (List.map string_of_int l) ^ "]"
 ```
 * We ask Exenum to show a few values of this enumeration:
 ```ocaml

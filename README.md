@@ -4,7 +4,8 @@ OCaml library : build efficient enumerations for datatypes. Inspired by Feat for
 
 ## Install
 
-Install with opam: opam install exenum
+Install with [opam](https://opam.ocaml.org/): `opam install exenum`
+
 
 ## API Documentation
 

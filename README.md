@@ -23,7 +23,6 @@ let enum_intlist = e_list e_int
 ```
 * Because pretty-printing matters, we take the time to define string_of_intlist:
 ```ocaml
-(* Helper function that builds a string from a list of items *)
 let string_of_intlist l = "[" ^ String.concat ", " (List.map string_of_int l) ^ "]"
 ```
 * We ask Exenum to show a few values of this enumeration:

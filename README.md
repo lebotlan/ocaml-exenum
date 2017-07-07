@@ -10,7 +10,8 @@ Install with [opam](https://opam.ocaml.org/): `opam install exenum`
 
 ## API Documentation
 
-To come sooner or later...
+The [Exenum API](https://lebotlan.github.io/ocaml-exenum/).
+
 
 ## Overview
 

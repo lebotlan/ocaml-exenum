@@ -1,0 +1,11 @@
+(jbuild_version 1)
+
+(executable
+ ((name    example_in_readme)
+  (libraries (exenum))))
+
+(alias
+  ((name   runtest)
+   (action (run echo "You may launch" ${exe:example_in_readme.exe} " by yourself."))))
+   
+

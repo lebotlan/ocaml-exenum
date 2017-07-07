@@ -76,12 +76,12 @@ let () = tester enum_intlist ~tos:string_of_intlist ~len:1000 ~verbose_period:10
 
 ```
 Test number 0, index #0 ... with [] ... done
-Test number 4000, index #30000 ... with [22, -10, -6, -2] ... done
-Test number 8000, index #510000 ... with [-50, 6, -7, 7, -1] ... done
-Test number 12000, index #8190000 ... with [51, 5, 6, -7, 3] ... done
-Test number 16000, index #131070000 ... with [-89, 45, 22, 5, 6, -2] ... done
+Test number 10000, index #2046000 ... with [51, 8, -9, 3, 2] ... done
 Test number 20000, index #2097150000 ... with [8, 0, 17, 3, 2, 2] ... done
-Test number 24000, index #33554430000 ... with [43, 117, 51, 6, 9, -5, 2] ... done
+Test number 30000, index #2147483646000 ... with [212, 107, -20, -9, 15, 0, -1] ... done
+Test number 40000, index #2199023255550000 ... with [-158, 4, 30, -48, 15, 5, -7, -2] ... done
+Test number 50000, index #2251799813685246000 ... with [47, 93, -244, -54, 5, 11, -13, 3, -3] ... done
+Test number 60000, index #2305843009213693950000 ... with [746, -191, 499, 61, -58, 31, -21, 9, 5, 2] ... done
 ...
 (and so on, you have to interrupt)
 ```

@@ -1,6 +1,8 @@
 # ocaml-exenum
 
-exenum is an **OCaml library** that helps building exhaustive or semi-exhaustive data sets, typically for intensive unit testing.
+exenum is an **[OCaml](http://ocaml.org/) library** that helps building exhaustive or semi-exhaustive data sets, typically for intensive unit testing.
+
+Inspired by [testing-feat](https://hackage.haskell.org/package/testing-feat) for Haskell.
 
 ## Install
 
@@ -85,3 +87,10 @@ Test number 60000, index #2305843009213693950000 ... with [746, -191, 499, 61, -
 ...
 (and so on, you have to interrupt)
 ```
+
+## Contact
+
+Didier Le Botlan, **github.lebotlan@dfgh.met**  where you replace **.met** by **.net**.
+
+
+

@@ -5,11 +5,12 @@ open Convenience
 let gen_tester print ?tos bind unit exen ?(from=bigzero) ?upto ?(verbose_period=10000) ~len f =
   
   assert (len > 0) ;
+  assert (verbose_period > 0) ;
 
   let bigverbose_period = boi verbose_period in
 
   let test_current count index =
-    let verbose = verbose_period > 0 && Big_int.eq_big_int bigzero (bigmod index bigverbose_period) in
+    let verbose = verbose_period > 0 && Big_int.eq_big_int bigzero (bigmod count bigverbose_period) in
     let test_value = get exen index in
     
     bind (if verbose then print (Printf.sprintf "Test number %s, index #%s ... %s" (sob count) (sob index)

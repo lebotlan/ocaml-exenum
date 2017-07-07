@@ -7,7 +7,7 @@ author: "Didier Le Botlan <github.lebotlan@dfgh.net>"
 
 homepage: "https://github.com/lebotlan/ocaml-exenum"
 bug-reports: "https://github.com/lebotlan/ocaml-exenum/issues"
-dev-repo: "git://github.com/lebotlan/ocaml-exenum"
+dev-repo: "git://github.com/lebotlan/ocaml-exenum.git"
 
 license: "MIT License"
 

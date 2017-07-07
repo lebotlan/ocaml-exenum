@@ -32,15 +32,15 @@ let () = show enum_intlist string_of_intlist 0 11
 ```
 Value #0 is []
 Value #1 is [2]
-Value #2 is [-1]
-Value #3 is [1]
-Value #4 is [0]
+Value #2 is [0]
+Value #3 is [3]
+Value #4 is [1]
 Value #5 is [-2]
-Value #6 is [3, 2]
+Value #6 is [-1]
 Value #7 is [-3]
-Value #8 is [3]
-Value #9 is [-1, 0]
-Value #10 is [1, 1]
+Value #8 is [4, 2]
+Value #9 is [1, 2]
+Value #10 is [0, -2]
 ```
 * We are curious. What are values at a very large index?
 ```ocaml
@@ -48,11 +48,38 @@ let index = Big_int.power_int_positive_int 10 200 (* Indeed, this is 10^200. *)
 let () = bigshow enum_intlist string_of_intlist index 2
 ```
 ```
-Value #0 is [-91, 83, -78, -59, -21, 45, -97, 79, 40, 50, 30, 46, -80, -45, 57, 70, -35, -71, 47, -29, -78, 58, -68, -12, -47, -32, -16, 36, 57, -51, 19, -33, -58, -37, 56, 38, 62, 2, 66, -65, -34, 36, 28, 46, 44, 53, 6, 10, 26, -54, -18, 35, 32, 40, 49, -2, -33, -42, -12, -26, -18, 8, 33, 41, 1, 29, -26, 8, 29, 5, 28, -7, -5, 32, -10, 17, 10, -9, 17, 5, 19, 21, -15, 20, 14, -18, 8, 3, -16, -4, 7, 8, 11, -6, -3, -1, 6, 2, -7, -2, -2, 1, 0, -1]
-Value #1 is [91, 33, 73, 53, 43, 12, -32, 53, -66, -69, -81, -17, -72, -86, -87, -41, 52, 54, 43, -19, -76, 24, -52, -77, -77, 0, -37, 69, 1, -5, -40, 16, -19, 68, 4, 11, -64, 15, -62, -58, 45, -49, -20, 46, -2, -45, -24, 56, -21, 41, -2, -14, 13, -5, 13, 10, 2, 41, -40, 27, -19, -20, -33, 1, -11, 29, -16, -12, -14, -3, 19, 8, 25, -11, -13, -11, 23, -24, -20, -5, -23, 24, -22, 8, -2, 9, 14, -7, 2, 2, 15, 11, -7, -1, 5, 7, 5, 5, 4, 4, 3, -1, 3, -2]
+Value #0 is [-11141639911, 19603183504, -15283679472, 6656783909, 1634524031, -471077998, 112885229, -223859756, -132220646, -7807730, -47780089, 30956540, -11221453, 3859390, 2834978, 2087393, 895525, -306900, -121738, -9063, 29280, 23372, 13852, -6911, -2887, 1103, 846, -253, -68, -13, 43, 10, -4, -2]
+Value #1 is [13635890183, -19174930941, -15838074444, -4484269954, -2648391618, -1149614834, 645802777, -18833984, 256671692, 42265941, -44644927, 19249984, 2972215, -5443265, 2028581, 844099, 519800, 375847, -76182, 27590, -64122, 29835, 14849, -7121, 4030, -327, -753, -498, 104, -8, 47, 0, -5, 4, -1]
 ```
 * Notice how these two values, which are adjacent in the enumeration, are (purposely) significantly different.
 * Computing values at a large index is quick (the complexity is basically logarithmic with respect to the index).
 
+* Testing a function
+```ocaml
+(* This is the function we wish to test. *)
+let mysum l = List.fold_left (+) 0 l
 
+(* This is the test we perform on mysum. *)
+let test_mysum l =
+  let sum1 = mysum l
+  
+  (* Here, we use an oracle to check if the function is right. *)
+  and sum2 = List.fold_right (+) l 0 in
 
+  assert (sum1 = sum2)
+  
+(* Exenum provides a 'tester', which applies test_mysum continuously. *)  
+let () = tester enum_intlist ~tos:string_of_intlist ~len:1000 ~verbose_period:10000 test_mysum
+```
+* The ~len argument is the number of consecutive indices which are tested before doubling the current index.
+* A message is printed every ~verbose_period tests.
+
+```
+Test number 0, index #0 ... with [] ... done
+Test number 4000, index #30000 ... with [22, -10, -6, -2] ... done
+Test number 8000, index #510000 ... with [-50, 6, -7, 7, -1] ... done
+Test number 12000, index #8190000 ... with [51, 5, 6, -7, 3] ... done
+Test number 16000, index #131070000 ... with [-89, 45, 22, 5, 6, -2] ... done
+Test number 20000, index #2097150000 ... with [8, 0, 17, 3, 2, 2] ... done
+Test number 24000, index #33554430000 ... with [43, 117, 51, 6, 9, -5, 2] ... done
+```

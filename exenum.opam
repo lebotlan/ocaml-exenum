@@ -1,7 +1,7 @@
 opam-version: "1.2"
 
 name: "exenum"
-version: "0.81"
+version: "0.82"
 
 author: "Didier Le Botlan <github.lebotlan@dfgh.net>"
 

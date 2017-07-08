@@ -11,11 +11,9 @@ dev-repo: "git://github.com/lebotlan/ocaml-exenum.git"
 
 license: "MIT License"
 
-build: [ [make] ]
-
 depends: [
          "ocamlfind"
          "jbuilder"
          ]
 
-
+build: [["jbuilder" "build" "-p" name "-j" jobs]]

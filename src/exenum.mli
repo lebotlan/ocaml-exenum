@@ -24,7 +24,8 @@
     Then, one may compute for instance term number 2000000000000, which happens to be
     {v ((((x v) (fun u -> y)) ((fun u -> y) (fun y -> y))) (((x v) (fun u -> v)) (fun u -> y))) v}
 
-    Efficiency: computing lambda-term number 1E200 (1 followed by 200 zeros) is instantaneous on an antique Intel Centrino. 
+    Efficiency: computing lambda-term number 1E200 (10^200) is instantaneous on an antique Intel Centrino,
+    because the complexity is logarithmic with respect to the index.
 
     Building an enumeration from a datatype is straightforward. For instance, the enumeration corresponding to type [term] is
     built as follows:

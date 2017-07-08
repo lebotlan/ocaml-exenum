@@ -4,7 +4,6 @@
  ((name        exenum_internals)
   (public_name exenum.internals)
   (libraries (num))
-  (synopsis "Build efficient enumerations for datatypes. Inspired by Feat for Haskell.")
   ))
   
 

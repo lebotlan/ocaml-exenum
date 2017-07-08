@@ -44,6 +44,19 @@ lib: [
   "_build/install/default/lib/exenum/internals/exenum_internals.cmxa" {"internals/exenum_internals.cmxa"}
   "_build/install/default/lib/exenum/internals/exenum_internals.a" {"internals/exenum_internals.a"}
   "_build/install/default/lib/exenum/internals/exenum_internals.cmxs" {"internals/exenum_internals.cmxs"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt.cmi" {"lwt/exenum_lwt.cmi"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt.cmx" {"lwt/exenum_lwt.cmx"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt.cmt" {"lwt/exenum_lwt.cmt"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt.ml-gen" {"lwt/exenum_lwt.ml-gen"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt__Lwt_tester.cmi" {"lwt/exenum_lwt__Lwt_tester.cmi"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt__Lwt_tester.cmx" {"lwt/exenum_lwt__Lwt_tester.cmx"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt__Lwt_tester.cmt" {"lwt/exenum_lwt__Lwt_tester.cmt"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt__Lwt_tester.cmti" {"lwt/exenum_lwt__Lwt_tester.cmti"}
+  "_build/install/default/lib/exenum/lwt/lwt_tester.mli" {"lwt/lwt_tester.mli"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt.cma" {"lwt/exenum_lwt.cma"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt.cmxa" {"lwt/exenum_lwt.cmxa"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt.a" {"lwt/exenum_lwt.a"}
+  "_build/install/default/lib/exenum/lwt/exenum_lwt.cmxs" {"lwt/exenum_lwt.cmxs"}
 ]
 doc: [
   "_build/install/default/doc/exenum/README.md"

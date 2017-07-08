@@ -16,4 +16,8 @@ depends: [
          "jbuilder"
          ]
 
+depopts: [
+          "lwt"
+          ]
+
 build: [["jbuilder" "build" "-p" name "-j" jobs]]

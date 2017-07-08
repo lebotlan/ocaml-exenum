@@ -3,8 +3,14 @@
 (library
  ((name        exenum)
   (public_name exenum)
+  (modules exenum)
   (libraries (exenum_internals))
   (synopsis "Build efficient enumerations for datatypes. Inspired by Feat for Haskell.")))
-  
 
-
+(library
+ ((name        exenum_lwt)
+  (public_name exenum.lwt)
+  (libraries (lwt exenum))
+  (modules lwt_tester)
+  (optional)
+  (synopsis "Tester that is lwt-compatible.")))

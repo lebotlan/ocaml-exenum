@@ -9,7 +9,7 @@
     is returned without having computed the (n-1) previous elements.
     Complexity is in log(n), except for some pathological datatypes.
 
-    Homepage: https://github.com/lebotlan/ocaml-exenum
+    Homepage: {{: https://github.com/lebotlan/ocaml-exenum} https://github.com/lebotlan/ocaml-exenum }
 
     {i Inspired by Feat: Functional Enumeration of Algebraic Types, by Duregard, Jansson, Wang, Chalmers University.}
 
@@ -47,7 +47,7 @@ let rec e_term = lazy
 let e_term = Lazy.force e_term
     ]}
 
-See examples in https://github.com/lebotlan/ocaml-exenum/tree/master/examples
+See examples in {{: https://github.com/lebotlan/ocaml-exenum/tree/master/examples} https://github.com/lebotlan/ocaml-exenum/tree/master/examples}
 
 *)
 

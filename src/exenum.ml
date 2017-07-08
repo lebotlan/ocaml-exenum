@@ -110,13 +110,13 @@ let e_interval a b = from_single_part (lazy (Printf.sprintf "[%d-%d]" a b)) (int
 let bmax_int = boi max_int
 let bmin_int = boi min_int
 
-let toint b = try iob b with _ -> 0
+let toint b = try iob (bigmod b bmax_int) with _ -> 0
 
 let e_nat = map e_bignat toint 
 let e_pos = map e_bigpos toint
-let e_neg = map e_bigneg toint
+let e_neg = map e_bigpos (fun b -> - (toint b))
 let e_int = union [single 0 ; e_pos ; e_neg]
-
+    
 (* Strings *)
 let e_string_from_echar enum_chars =
   let rec enum = lazy ( union [ map e_unit (fun () -> "") ; 

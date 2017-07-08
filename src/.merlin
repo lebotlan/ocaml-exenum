@@ -1,10 +1,6 @@
 B ../_build/default/src
 B ../_build/default/src/internals
-FLG -w -40 -open Exenum_lwt -w -40
-PKG bytes
-PKG lwt
+FLG -w -40
 PKG num
 PKG num.core
-PKG result
-S .
 S internals

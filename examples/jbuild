@@ -1,11 +1,13 @@
 (jbuild_version 1)
 
-(executable
- ((name    example_in_readme)
+(executables
+ ((names (ex_in_readme ex_lambda ex_record ex_recursive))
   (libraries (exenum))))
 
 (alias
-  ((name   runtest)
-   (action (run echo "You may launch" ${exe:example_in_readme.exe} " by yourself."))))
+  ((name   examples)
+   (deps (ex_in_readme.exe ex_lambda.exe ex_record.exe ex_recursive.exe))))
+
+   
    
 

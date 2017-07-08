@@ -1,12 +1,12 @@
-.PHONY: all test clean doc build
+.PHONY: all test clean doc build examples
 
 all:	build
 
 build:
 	jbuilder build
 
-test:
-	jbuilder runtest
+examples:
+	jbuilder build @examples/examples
 
 clean:
 	find -L . -name "*~" -delete

@@ -1,4 +1,4 @@
-open ExEnum
+open Exenum
 
 type term = Var of string | App of term * term | Lambda of string * term
 

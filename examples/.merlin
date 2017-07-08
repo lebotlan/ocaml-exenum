@@ -1,0 +1,8 @@
+B ../_build/default/examples
+B ../_build/default/src
+B ../_build/default/src/internals
+FLG -w -40
+PKG num
+PKG num.core
+S ../src
+S ../src/internals

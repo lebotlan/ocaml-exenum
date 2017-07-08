@@ -54,7 +54,7 @@ See examples in {{: https://github.com/lebotlan/ocaml-exenum/tree/master/example
 open Big_int
 
 (** The type of exhaustive enumerations of values of type 'a. 
- *  Enumerations can be finite of infinite. *)
+    Enumerations can be finite of infinite. *)
 type 'a enum
 type 'a t = 'a enum
 

@@ -35,13 +35,13 @@
     Complexity is in log(n), except for some pathological datatypes.
 <p>
 
-    See the homepage for details: http://exenum.forge.ocamlcore.org/
+    Homepage: https://github.com/lebotlan/ocaml-exenum
 <p>
 
     <i>Inspired by Feat: Functional Enumeration of Algebraic Types, by Duregard, Jansson, Wang, Chalmers University.</i>
 <p>
 
-    <i>Contact: D. Le Botlan (lebotlan atat users.forge.ocamlcore.org)</i>
+    <i>Contact: D. Le Botlan (github.lebotlan'@'dfgh.met where you replace .met by .net.) </i>
 <p>
 
     <h3 id="3_Example">Example</h3>
@@ -55,10 +55,6 @@
     <pre class="verbatim">((((x v) (fun u -&gt; y)) ((fun u -&gt; y) (fun y -&gt; y))) (((x v) (fun u -&gt; v)) (fun u -&gt; y)))</pre>
 <p>
 
-    Efficiency: computing lambda-term number 1E200 (10^200) is instantaneous on an antique Intel Centrino,
-    because the complexity is logarithmic with respect to the index.
-<p>
-
     Building an enumeration from a datatype is straightforward. For instance, the enumeration corresponding to type <code class="code">term</code> is
     built as follows:
     <pre class="codepre"><code class="code">(* We restrict ourselves to four variable names. *)
@@ -67,7 +63,7 @@ let e_vars = from_list ~name:"variables" ["x" ; "y" ; "u" ; "v"]
 (* Type term is recursive, hence we need a lazy enumeration first. *)
 let rec e_term = lazy
   begin
-    (* In order to use the enumeration recursively, we need to "pay" a cost. *)
+    (* In order to use the enumeration recursively, we need to "pay" a recursive fee. *)
     let r_term = pay e_term in
    
     (* Now, this is the direct translation of the datatype definition. *)
@@ -79,13 +75,17 @@ let rec e_term = lazy
 
 (* Here is the enumeration for lambda-terms. *)
 let e_term = Lazy.force e_term
-    </code></pre><br>
+    </code></pre>
+<p>
+
+See examples in https://github.com/lebotlan/ocaml-exenum/tree/master/examples<br>
 </div>
 <hr width="100%">
 
 <pre><span id="TYPEenum"><span class="keyword">type</span> <code class="type">'a</code> enum</span> </pre>
 <div class="info ">
-The type of exhaustive enumerations of values of type 'a.<br>
+The type of exhaustive enumerations of values of type 'a. 
+ *  Enumerations can be finite of infinite.<br>
 </div>
 
 
@@ -95,7 +95,7 @@ The type of exhaustive enumerations of values of type 'a.<br>
 <h3 id="3_Basics">Basics</h3><br>
 
 <pre><span id="VALfrom_list"><span class="keyword">val</span> from_list</span> : <code class="type">?name:string -> 'a list -> 'a <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
-Builds an enumeration from a finite set of values. 
+Builds a finite enumeration from a finite set of values. 
     The name is used for nicer debugging.<br>
 </div>
 
@@ -104,12 +104,12 @@ Enumeration of a single value (derived from <a href="Exenum.html#VALfrom_list"><
 </div>
 
 <pre><span id="VALcardinal"><span class="keyword">val</span> cardinal</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> Big_int.big_int option</code></pre><div class="info ">
-Returns the cardinality of type 'a. None means infinity.<br>
+<code class="code">cardinal enum</code> Returns the cardinality of <code class="code">enum</code>. None means infinity.<br>
 </div>
 
 <pre><span id="VALget"><span class="keyword">val</span> get</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> Big_int.big_int -> 'a</code></pre><div class="info ">
-Returns the nth value of type 'a, starting at 0.<br>
-<b>Raises</b> <code>Failure</code> if the index is greater or equal than the cardinality of 'a t.<br>
+<code class="code">get enum n</code> Returns the nth value of type 'a, starting at 0.<br>
+<b>Raises</b> <code>Failure</code> if <code class="code">n</code> is greater or equal than the cardinality of <code class="code">enum</code>.<br>
 </div>
 <br>
 <h3 id="3_Finiteenumerationsforgroundtypes">Finite enumerations for ground types</h3><br>
@@ -139,7 +139,7 @@ Enumeration of an integer interval.<br>
 </div>
 
 <pre><span id="VALsub"><span class="keyword">val</span> sub</span> : <code class="type">max:Big_int.big_int -> 'a <a href="Exenum.html#TYPEt">t</a> -> 'a <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
-Restrict an enumeration to the given number of elements.<br>
+<code class="code">sub ~max enum</code> Returns a finite enumeration with at most <code class="code">max</code> elements.<br>
 </div>
 <br>
 <h3 id="3_Infiniteenumerationsforgroundtypes">Infinite enumerations for ground types</h3><br>
@@ -184,8 +184,8 @@ Strings, built only with the given characters.<br>
 <h3 id="3_Composition">Composition</h3><br>
 
 <pre><span id="VALunion"><span class="keyword">val</span> union</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> list -> 'a <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
-Builds an enumeration from a union of enumerations. 
-    The enumerations given in the list must be disjoint, otherwise injectivity of the resulting enumeration is not guaranteed.<br>
+<code class="code">union enums</code> builds an enumeration from a union of enumerations. 
+    If <code class="code">enums</code> are disjoint enumerations, the resulting enumeration is disjoint<br>
 </div>
 
 <pre><span id="VALproduct"><span class="keyword">val</span> product</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> list -> 'a list <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
@@ -198,10 +198,13 @@ Convenience function to build an enumeration of pairs from two enumerations (der
 
 <pre><span id="VALtriple"><span class="keyword">val</span> triple</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> 'b <a href="Exenum.html#TYPEt">t</a> -> 'c <a href="Exenum.html#TYPEt">t</a> -> ('a * 'b * 'c) <a href="Exenum.html#TYPEt">t</a></code></pre>
 <pre><span id="VALtuple2"><span class="keyword">val</span> tuple2</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> 'b <a href="Exenum.html#TYPEt">t</a> -> ('a * 'b) <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
-Generic names for pair and triple.<br>
+This is the same as <code class="code">pair</code><br>
 </div>
 
-<pre><span id="VALtuple3"><span class="keyword">val</span> tuple3</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> 'b <a href="Exenum.html#TYPEt">t</a> -> 'c <a href="Exenum.html#TYPEt">t</a> -> ('a * 'b * 'c) <a href="Exenum.html#TYPEt">t</a></code></pre>
+<pre><span id="VALtuple3"><span class="keyword">val</span> tuple3</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> 'b <a href="Exenum.html#TYPEt">t</a> -> 'c <a href="Exenum.html#TYPEt">t</a> -> ('a * 'b * 'c) <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
+This is the same as <code class="code">triple</code><br>
+</div>
+
 <pre><span id="VALtuple4"><span class="keyword">val</span> tuple4</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -><br>       'b <a href="Exenum.html#TYPEt">t</a> -> 'c <a href="Exenum.html#TYPEt">t</a> -> 'd <a href="Exenum.html#TYPEt">t</a> -> ('a * 'b * 'c * 'd) <a href="Exenum.html#TYPEt">t</a></code></pre>
 <pre><span id="VALtuple5"><span class="keyword">val</span> tuple5</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -><br>       'b <a href="Exenum.html#TYPEt">t</a> -><br>       'c <a href="Exenum.html#TYPEt">t</a> -><br>       'd <a href="Exenum.html#TYPEt">t</a> -> 'e <a href="Exenum.html#TYPEt">t</a> -> ('a * 'b * 'c * 'd * 'e) <a href="Exenum.html#TYPEt">t</a></code></pre>
 <pre><span id="VALtuple6"><span class="keyword">val</span> tuple6</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -><br>       'b <a href="Exenum.html#TYPEt">t</a> -><br>       'c <a href="Exenum.html#TYPEt">t</a> -><br>       'd <a href="Exenum.html#TYPEt">t</a> -><br>       'e <a href="Exenum.html#TYPEt">t</a> -> 'f <a href="Exenum.html#TYPEt">t</a> -> ('a * 'b * 'c * 'd * 'e * 'f) <a href="Exenum.html#TYPEt">t</a></code></pre>

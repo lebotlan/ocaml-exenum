@@ -23,7 +23,7 @@
 <tr><td align="left"><br>C</td></tr>
 <tr><td><a href="Exenum.html#VALcardinal">cardinal</a> [<a href="Exenum.html">Exenum</a>]</td>
 <td><div class="info">
-Returns the cardinality of type 'a.
+<code class="code">cardinal enum</code> Returns the cardinality of <code class="code">enum</code>.
 </div>
 </td></tr>
 <tr><td align="left"><br>E</td></tr>
@@ -118,13 +118,13 @@ One element: ().
 <tr><td align="left"><br>F</td></tr>
 <tr><td><a href="Exenum.html#VALfrom_list">from_list</a> [<a href="Exenum.html">Exenum</a>]</td>
 <td><div class="info">
-Builds an enumeration from a finite set of values.
+Builds a finite enumeration from a finite set of values.
 </div>
 </td></tr>
 <tr><td align="left"><br>G</td></tr>
 <tr><td><a href="Exenum.html#VALget">get</a> [<a href="Exenum.html">Exenum</a>]</td>
 <td><div class="info">
-Returns the nth value of type 'a, starting at 0.
+<code class="code">get enum n</code> Returns the nth value of type 'a, starting at 0.
 </div>
 </td></tr>
 <tr><td align="left"><br>M</td></tr>
@@ -163,7 +163,7 @@ Enumeration of a single value (derived from <a href="Exenum.html#VALfrom_list"><
 </td></tr>
 <tr><td><a href="Exenum.html#VALsub">sub</a> [<a href="Exenum.html">Exenum</a>]</td>
 <td><div class="info">
-Restrict an enumeration to the given number of elements.
+<code class="code">sub ~max enum</code> Returns a finite enumeration with at most <code class="code">max</code> elements.
 </div>
 </td></tr>
 <tr><td align="left"><br>T</td></tr>
@@ -176,11 +176,14 @@ Restrict an enumeration to the given number of elements.
 <td></td></tr>
 <tr><td><a href="Exenum.html#VALtuple2">tuple2</a> [<a href="Exenum.html">Exenum</a>]</td>
 <td><div class="info">
-Generic names for pair and triple.
+This is the same as <code class="code">pair</code>
 </div>
 </td></tr>
 <tr><td><a href="Exenum.html#VALtuple3">tuple3</a> [<a href="Exenum.html">Exenum</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This is the same as <code class="code">triple</code>
+</div>
+</td></tr>
 <tr><td><a href="Exenum.html#VALtuple4">tuple4</a> [<a href="Exenum.html">Exenum</a>]</td>
 <td></td></tr>
 <tr><td><a href="Exenum.html#VALtuple5">tuple5</a> [<a href="Exenum.html">Exenum</a>]</td>
@@ -190,7 +193,7 @@ Generic names for pair and triple.
 <tr><td align="left"><br>U</td></tr>
 <tr><td><a href="Exenum.html#VALunion">union</a> [<a href="Exenum.html">Exenum</a>]</td>
 <td><div class="info">
-Builds an enumeration from a union of enumerations.
+<code class="code">union enums</code> builds an enumeration from a union of enumerations.
 </div>
 </td></tr>
 </table>

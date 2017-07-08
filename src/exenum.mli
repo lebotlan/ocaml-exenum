@@ -9,11 +9,11 @@
     is returned without having computed the (n-1) previous elements.
     Complexity is in log(n), except for some pathological datatypes.
 
-    See the homepage for details: http://exenum.forge.ocamlcore.org/
+    Homepage: https://github.com/lebotlan/ocaml-exenum
 
     {i Inspired by Feat: Functional Enumeration of Algebraic Types, by Duregard, Jansson, Wang, Chalmers University.}
 
-    {i Contact: D. Le Botlan (lebotlan atat users.forge.ocamlcore.org)}
+    {i Contact: D. Le Botlan (github.lebotlan'@'dfgh.met where you replace .met by .net.) }
 
     {3 Example}
 
@@ -24,9 +24,6 @@
     Then, one may compute for instance term number 2000000000000, which happens to be
     {v ((((x v) (fun u -> y)) ((fun u -> y) (fun y -> y))) (((x v) (fun u -> v)) (fun u -> y))) v}
 
-    Efficiency: computing lambda-term number 1E200 (10^200) is instantaneous on an antique Intel Centrino,
-    because the complexity is logarithmic with respect to the index.
-
     Building an enumeration from a datatype is straightforward. For instance, the enumeration corresponding to type [term] is
     built as follows:
     {[
@@ -36,7 +33,7 @@ let e_vars = from_list ~name:"variables" ["x" ; "y" ; "u" ; "v"]
 (* Type term is recursive, hence we need a lazy enumeration first. *)
 let rec e_term = lazy
   begin
-    (* In order to use the enumeration recursively, we need to "pay" a cost. *)
+    (* In order to use the enumeration recursively, we need to "pay" a recursive fee. *)
     let r_term = pay e_term in
    
     (* Now, this is the direct translation of the datatype definition. *)
@@ -49,28 +46,32 @@ let rec e_term = lazy
 (* Here is the enumeration for lambda-terms. *)
 let e_term = Lazy.force e_term
     ]}
+
+See examples in https://github.com/lebotlan/ocaml-exenum/tree/master/examples
+
 *)
 
 open Big_int
 
-(** The type of exhaustive enumerations of values of type 'a. *)
+(** The type of exhaustive enumerations of values of type 'a. 
+ *  Enumerations can be finite of infinite. *)
 type 'a enum
 type 'a t = 'a enum
 
 (** {3 Basics} *)
 
-(** Builds an enumeration from a finite set of values. 
+(** Builds a finite enumeration from a finite set of values. 
     The name is used for nicer debugging. *)
 val from_list : ?name:string -> 'a list -> 'a t
 
 (** Enumeration of a single value (derived from {!from_list}). *)
 val single : ?name:string -> 'a -> 'a t
 
-(** Returns the cardinality of type 'a. None means infinity. *)
+(** [cardinal enum] Returns the cardinality of [enum]. None means infinity. *)
 val cardinal : 'a t -> big_int option
 
-(** Returns the nth value of type 'a, starting at 0.
-    @raise Failure if the index is greater or equal than the cardinality of 'a t. *)
+(** [get enum n] Returns the nth value of type 'a, starting at 0.
+    @raise Failure if [n] is greater or equal than the cardinality of [enum]. *)
 val get : 'a t -> big_int -> 'a
 
 (** {3 Finite enumerations for ground types} *)
@@ -91,7 +92,7 @@ val e_biginterval : big_int -> big_int -> big_int t
 (** Enumeration of an integer interval. *)
 val e_interval : int -> int -> int t
 
-(** Restrict an enumeration to the given number of elements. *)
+(** [sub ~max enum] Returns a finite enumeration with at most [max] elements. *)
 val sub : max:big_int -> 'a t -> 'a t
 
 
@@ -131,8 +132,8 @@ val e_rstring : char list -> string t
 
 (** {3 Composition} *)
 
-(** Builds an enumeration from a union of enumerations. 
-    The enumerations given in the list must be disjoint, otherwise injectivity of the resulting enumeration is not guaranteed. *)
+(** [union enums] builds an enumeration from a union of enumerations. 
+    If [enums] are disjoint enumerations, the resulting enumeration is disjoint *)
 val union : ('a t) list -> 'a t
 
 (** Builds an enumeration from a cartesian product of enumerations. *)
@@ -142,8 +143,10 @@ val product : ('a t) list -> ('a list) t
 val pair   : ('a t) -> ('b t) -> ('a * 'b) t
 val triple : ('a t) -> ('b t) -> ('c t) -> ('a * 'b * 'c) t
 
-(** Generic names for pair and triple. *)
+(** This is the same as [pair] *)   
 val tuple2  : ('a t) -> ('b t) -> ('a * 'b) t
+
+(** This is the same as [triple] *)
 val tuple3  : ('a t) -> ('b t) -> ('c t) -> ('a * 'b * 'c) t
 
 val tuple4  : ('a t) -> ('b t) -> ('c t) -> ('d t) -> ('a * 'b * 'c * 'd) t

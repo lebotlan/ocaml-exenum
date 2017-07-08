@@ -10,7 +10,7 @@ Install with [opam](https://opam.ocaml.org/): `opam install exenum`
 
 ## API Documentation
 
-The [Exenum API](https://lebotlan.github.io/ocaml-exenum/).
+The [Exenum API](https://lebotlan.github.io/ocaml-exenum/Exenum.html).
 
 The ocamlfind package name is `exenum`.
 

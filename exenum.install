@@ -46,7 +46,6 @@ lib: [
   "_build/install/default/lib/exenum/internals/exenum_internals.cmxs" {"internals/exenum_internals.cmxs"}
 ]
 doc: [
-  "_build/install/default/doc/exenum/README.md~"
   "_build/install/default/doc/exenum/README.md"
   "_build/install/default/doc/exenum/LICENSE"
   "_build/install/default/doc/exenum/CHANGES"

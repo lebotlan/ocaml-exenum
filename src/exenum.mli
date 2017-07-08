@@ -13,7 +13,7 @@
 
     {i Inspired by Feat: Functional Enumeration of Algebraic Types, by Duregard, Jansson, Wang, Chalmers University.}
 
-    {i Contact: D. Le Botlan (github.lebotlan'@'dfgh.met where you replace .met by .net.) }
+    {i Contact: D. Le Botlan (github.lebotlan\@dfgh.met where you replace .met by .net.) }
 
     {3 Example}
 

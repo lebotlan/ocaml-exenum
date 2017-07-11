@@ -133,7 +133,7 @@ val e_rstring : char list -> string t
 (** {3 Composition} *)
 
 (** [union enums] builds an enumeration from a union of enumerations. 
-    If [enums] are disjoint enumerations, the resulting enumeration is disjoint *)
+    If [enums] are disjoint enumerations, the resulting enumeration is injective. *)
 val union : ('a t) list -> 'a t
 
 (** Builds an enumeration from a cartesian product of enumerations. *)

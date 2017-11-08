@@ -5,7 +5,7 @@ values. Such enumerations are typically used for unit testing. The
 library is efficient: the n-th element of an enumeration is returned
 without having computed the (n-1) previous elements. Complexity is in
 log(n), except for some pathological datatypes. See the homepage for
-details: http://exenum.forge.ocamlcore.org/
+details: https://github.com/lebotlan/ocaml-exenum
 Inspired by Feat: Functional Enumeration of Algebraic Types, by
 Duregard, Jansson, Wang, Chalmers University.
 

@@ -204,3 +204,7 @@ val tester : 'a t -> ?from:big_int -> ?upto:big_int -> ?verbose_period:int -> ?t
 (**/**)
 (* You certainly don't need to use this. *)
 val get_exen: 'a enum -> 'a Exenum_internals.Exen.t
+
+
+(* TODO: automatically build the print function ? *)
+    

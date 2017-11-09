@@ -53,7 +53,7 @@ Value #10 is [0, -2]
 ```
 * We are curious. What are values at a very large index?
 ```ocaml
-let index = Big_int.power_int_positive_int 10 200 (* Indeed, this is 10^200. *)
+let index = Z.pow (Z.of_int 10) 200 (* Indeed, this is 10^200. *)
 let () = bigshow enum_intlist string_of_intlist index 2
 ```
 ```

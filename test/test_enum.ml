@@ -1,11 +1,10 @@
 open Exenum
-open Big_int
 open Exenum_internals.Convenience
 
 
 (* Show a value. *)
 let show index showf value =
-  Printf.printf "=== Value at position %s ===> " (string_of_big_int index) ;
+  Printf.printf "=== Value at position %s ===> " (Z.to_string index) ;
   Printf.printf "%s\n%!" (showf value) ;
   Printf.printf "\n%!" ;
   ()
@@ -14,7 +13,7 @@ let show index showf value =
 let test_enum start length enum showf =
 
   for i = 0 to length-1 do
-    let index = i +++ start in
+    let index = start +++ i in
     let value = get enum index in
     show index showf value
   done ;

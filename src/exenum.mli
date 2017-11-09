@@ -51,8 +51,6 @@ See examples in {{: https://github.com/lebotlan/ocaml-exenum/tree/master/example
 
 *)
 
-open Big_int
-
 (** The type of exhaustive enumerations of values of type 'a. 
     Enumerations can be finite of infinite. *)
 type 'a enum
@@ -68,11 +66,11 @@ val from_list : ?name:string -> 'a list -> 'a t
 val single : ?name:string -> 'a -> 'a t
 
 (** [cardinal enum] Returns the cardinality of [enum]. None means infinity. *)
-val cardinal : 'a t -> big_int option
+val cardinal : 'a t -> Z.t option
 
 (** [get enum n] Returns the nth value of type 'a, starting at 0.
     @raise Failure if [n] is greater or equal than the cardinality of [enum]. *)
-val get : 'a t -> big_int -> 'a
+val get : 'a t -> Z.t -> 'a
 
 (** {3 Finite enumerations for ground types} *)
 
@@ -87,13 +85,13 @@ val e_char   : char t
 val e_pchar  : char t (** Printable characters (from 32 to 125). *)
 
 (** Enumeration of a big-integer interval. *)
-val e_biginterval : big_int -> big_int -> big_int t
+val e_biginterval : Z.t -> Z.t -> Z.t t
 
 (** Enumeration of an integer interval. *)
 val e_interval : int -> int -> int t
 
 (** [sub ~max enum] Returns a finite enumeration with at most [max] elements. *)
-val sub : max:big_int -> 'a t -> 'a t
+val sub : max:Z.t -> 'a t -> 'a t
 
 
 (** {3 Infinite enumerations for ground types} *)
@@ -101,14 +99,14 @@ val sub : max:big_int -> 'a t -> 'a t
 (** For these enumerations of integers, do not expect the n-th value to be equal to the integer n. Integers are shuffled. *)
 
 (** Strictly positive numbers: \[1, +infty\[*)
-val e_bigpos : big_int t 
+val e_bigpos : Z.t t 
 
 (** Natural numbers: \[0, +infty\[ *)
-val e_bignat : big_int t
+val e_bignat : Z.t t
 
 (** All numbers: \] -infty, +infty \[ 
     This enumeration starts from 0 and alternates between positive and negative values. *)
-val e_bigint : big_int t
+val e_bigint : Z.t t
 
 
 (** Natural integers: \[0, max_int\] as an infinite enumeration (hence, non-injective). *)
@@ -183,8 +181,8 @@ val map : 'a t -> ('a -> 'b) -> 'b t
     from index index to index (index + len - 1). *)
 val show : 'a t -> ('a -> string) -> int -> int -> unit
 
-(** [bigshow enum to_string index len] is similar to [show], except that index is a big_int. *)
-val bigshow : 'a t -> ('a -> string) -> big_int -> int -> unit
+(** [bigshow enum to_string index len] is similar to [show], except that index is a Z.t. *)
+val bigshow : 'a t -> ('a -> string) -> Z.t -> int -> unit
 
 (** [tester enum ~len f] applies f in sequence to different values of the enumeration. 
     First, [len] values are taken starting at 0 (or starting from [from], if specified).
@@ -198,7 +196,7 @@ val bigshow : 'a t -> ('a -> string) -> big_int -> int -> unit
 
     @raise Assert_failure if [len <= 0]
  *)
-val tester : 'a t -> ?from:big_int -> ?upto:big_int -> ?verbose_period:int -> ?tos:('a -> string) -> len:int -> ('a -> unit) -> unit
+val tester : 'a t -> ?from:Z.t -> ?upto:Z.t -> ?verbose_period:int -> ?tos:('a -> string) -> len:int -> ('a -> unit) -> unit
 
 
 (**/**)

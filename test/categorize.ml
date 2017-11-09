@@ -1,9 +1,8 @@
 open Exenum_internals.Convenience
-open Big_int
 
 type 'b category = 
     { name : (unit -> string) ;
-      size : (unit -> big_int) ;
+      size : (unit -> Z.t) ;
       id : 'b }
 
 type ('a,'b) catfun = ('a -> 'b category)

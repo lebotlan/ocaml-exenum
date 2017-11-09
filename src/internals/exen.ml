@@ -8,7 +8,7 @@ open Convenience
 (* An enumeration *)
 type 'a t = {
     (* Number of elements. None means infinity. *)
-    cardinal : Big_int.big_int option ;
+    cardinal : Z.t option ;
     
     (* Number of parts. None means infinity. *)
     n_parts  : int option ;
@@ -64,7 +64,7 @@ let rec get_in_parts exen value_index array_index =
   let part = get_part exen array_index in
 
   (* Is the index in range of this part ? *)
-  if part.p_cardinal <== value_index then
+  if part.p_cardinal <= value_index then
     (* No. Go to next part. *)
     get_in_parts exen (value_index -- part.p_cardinal) (array_index + 1)
   else
@@ -76,7 +76,7 @@ let get exen index =
   begin match exen.cardinal with
   | None -> ()
   | Some max -> 
-      if max <== index then 
+      if max <= index then 
 	failwith (Printf.sprintf "Exenum.get: index is out of bounds : %s / %s" (sob index) (sob (max -- bigone)))
   end ;
   
@@ -153,7 +153,7 @@ let sub ~max exen =
     match exen.cardinal with
     | None -> Some max
     | Some bound -> 
-	if max <== bound then Some max
+	if max <= bound then Some max
 	else Some bound
   in
 
@@ -286,6 +286,8 @@ let prod_parts array_index exens =
   (* List all vectors that satisfy the current depth (i.e. at least one index is the expected array_index). *)
   let all_vectors = find_vectors array_index max_revindexes in
 
+  assert (all_vectors <> []) ;
+  
   (* Map these vectors to part lists. *)
   let all_rev_parts = List.rev_map (vector_to_part_list exens) all_vectors in
 

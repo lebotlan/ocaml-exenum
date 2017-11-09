@@ -1,5 +1,4 @@
 open Exenum
-open Big_int
 open Exenum_internals.Convenience
 
 (* Test injectivity:
@@ -34,9 +33,9 @@ module C = Categorize
 (* Records stats for a given category. *)
 type cat_stats = {
     (* We just count values. We do not remember values to check they are different since we assume injectivity. *)
-    values_seen : big_int ;
+    values_seen : Z.t ;
 
-    size : big_int ;
+    size : Z.t ;
   }
 
 let get_stat map category =
@@ -69,7 +68,7 @@ let check_surjective catfun exen start length =
 	if 0 = big_compare new_stat.values_seen new_stat.size then
 	  Printf.printf "Category %s has been fully enumerated.\n%!" (C.name category) ;
 
-	assert (new_stat.values_seen <== new_stat.size) ;
+	assert (new_stat.values_seen <= new_stat.size) ;
 
 	Hashtbl.replace map (C.id category) new_stat ;
 

@@ -16,7 +16,7 @@ open Exenum_internals.Convenience
 (* A category whose identifiers are of type 'b. *)
 type 'b category
 
-val size : 'b category -> Big_int.big_int
+val size : 'b category -> Z.t
 val name : 'b category -> string
 
 (* Returns a unique identifier for this category. *)

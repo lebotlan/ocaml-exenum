@@ -1,5 +1,3 @@
-open Big_int
-
 (** 
     {2 Lwt version of Exenum.tester }
 *)
@@ -10,4 +8,4 @@ open Big_int
     @param len [len] consecutive values are enumerated, then the index is doubled (and we loop)
     @param upto By default, the tests go on forever.
 *)
-val tester : 'a Exenum.t -> ?from:big_int -> ?upto:big_int -> ?verbose_period:int -> ?tos:('a -> string) -> len:int -> ('a -> unit Lwt.t) -> unit Lwt.t
+val tester : 'a Exenum.t -> ?from:Z.t -> ?upto:Z.t -> ?verbose_period:int -> ?tos:('a -> string) -> len:int -> ('a -> unit Lwt.t) -> unit Lwt.t

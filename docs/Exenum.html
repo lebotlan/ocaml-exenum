@@ -106,11 +106,11 @@ Builds a finite enumeration from a finite set of values.
 Enumeration of a single value (derived from <a href="Exenum.html#VALfrom_list"><code class="code">Exenum.from_list</code></a>).<br>
 </div>
 
-<pre><span id="VALcardinal"><span class="keyword">val</span> cardinal</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> Big_int.big_int option</code></pre><div class="info ">
+<pre><span id="VALcardinal"><span class="keyword">val</span> cardinal</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> Z.t option</code></pre><div class="info ">
 <code class="code">cardinal enum</code> Returns the cardinality of <code class="code">enum</code>. None means infinity.<br>
 </div>
 
-<pre><span id="VALget"><span class="keyword">val</span> get</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> Big_int.big_int -> 'a</code></pre><div class="info ">
+<pre><span id="VALget"><span class="keyword">val</span> get</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> Z.t -> 'a</code></pre><div class="info ">
 <code class="code">get enum n</code> Returns the nth value of type 'a, starting at 0.<br>
 <b>Raises</b> <code>Failure</code> if <code class="code">n</code> is greater or equal than the cardinality of <code class="code">enum</code>.<br>
 </div>
@@ -133,7 +133,7 @@ Contains 256 elements: from '\000' to '\255'.<br>
 Printable characters (from 32 to 125).<br>
 </div>
 
-<pre><span id="VALe_biginterval"><span class="keyword">val</span> e_biginterval</span> : <code class="type">Big_int.big_int -> Big_int.big_int -> Big_int.big_int <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALe_biginterval"><span class="keyword">val</span> e_biginterval</span> : <code class="type">Z.t -> Z.t -> Z.t <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
 Enumeration of a big-integer interval.<br>
 </div>
 
@@ -141,7 +141,7 @@ Enumeration of a big-integer interval.<br>
 Enumeration of an integer interval.<br>
 </div>
 
-<pre><span id="VALsub"><span class="keyword">val</span> sub</span> : <code class="type">max:Big_int.big_int -> 'a <a href="Exenum.html#TYPEt">t</a> -> 'a <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALsub"><span class="keyword">val</span> sub</span> : <code class="type">max:Z.t -> 'a <a href="Exenum.html#TYPEt">t</a> -> 'a <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
 <code class="code">sub ~max enum</code> Returns a finite enumeration with at most <code class="code">max</code> elements.<br>
 </div>
 <br>
@@ -149,15 +149,15 @@ Enumeration of an integer interval.<br>
 <br>
 For these enumerations of integers, do not expect the n-th value to be equal to the integer n. Integers are shuffled.<br>
 
-<pre><span id="VALe_bigpos"><span class="keyword">val</span> e_bigpos</span> : <code class="type">Big_int.big_int <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALe_bigpos"><span class="keyword">val</span> e_bigpos</span> : <code class="type">Z.t <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
 Strictly positive numbers: [1, +infty[<br>
 </div>
 
-<pre><span id="VALe_bignat"><span class="keyword">val</span> e_bignat</span> : <code class="type">Big_int.big_int <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALe_bignat"><span class="keyword">val</span> e_bignat</span> : <code class="type">Z.t <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
 Natural numbers: [0, +infty[<br>
 </div>
 
-<pre><span id="VALe_bigint"><span class="keyword">val</span> e_bigint</span> : <code class="type">Big_int.big_int <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALe_bigint"><span class="keyword">val</span> e_bigint</span> : <code class="type">Z.t <a href="Exenum.html#TYPEt">t</a></code></pre><div class="info ">
 All numbers: ] -infty, +infty [ 
     This enumeration starts from 0 and alternates between positive and negative values.<br>
 </div>
@@ -244,11 +244,11 @@ Builds an enumeration by mapping an existing enumeration.<br>
     from index index to index (index + len - 1).<br>
 </div>
 
-<pre><span id="VALbigshow"><span class="keyword">val</span> bigshow</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> ('a -> string) -> Big_int.big_int -> int -> unit</code></pre><div class="info ">
-<code class="code">bigshow enum to_string index len</code> is similar to <code class="code">show</code>, except that index is a big_int.<br>
+<pre><span id="VALbigshow"><span class="keyword">val</span> bigshow</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -> ('a -> string) -> Z.t -> int -> unit</code></pre><div class="info ">
+<code class="code">bigshow enum to_string index len</code> is similar to <code class="code">show</code>, except that index is a Z.t.<br>
 </div>
 
-<pre><span id="VALtester"><span class="keyword">val</span> tester</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -><br>       ?from:Big_int.big_int -><br>       ?upto:Big_int.big_int -><br>       ?verbose_period:int -> ?tos:('a -> string) -> len:int -> ('a -> unit) -> unit</code></pre><div class="info ">
+<pre><span id="VALtester"><span class="keyword">val</span> tester</span> : <code class="type">'a <a href="Exenum.html#TYPEt">t</a> -><br>       ?from:Z.t -><br>       ?upto:Z.t -><br>       ?verbose_period:int -> ?tos:('a -> string) -> len:int -> ('a -> unit) -> unit</code></pre><div class="info ">
 <code class="code">tester enum ~len f</code> applies f in sequence to different values of the enumeration. 
     First, <code class="code">len</code> values are taken starting at 0 (or starting from <code class="code">from</code>, if specified).
     Then, the current index is multiplied by 2 (that is, we start at 2*len) and again <code class="code">len</code> values are considered.

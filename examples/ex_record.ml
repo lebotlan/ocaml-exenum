@@ -39,5 +39,5 @@ let enum_bar =
 (* Let us show some values. *)
 let () = show enum_bar string_of_bar 0 10
 
-let index = Big_int.power_int_positive_int 10 100 (* This is 10^100. *)
+let index = Z.pow (Z.of_int 10) 100 (* This is 10^100. *)
 let () = bigshow enum_bar string_of_bar index 2

@@ -3,7 +3,7 @@
 (library
  ((name        exenum_internals)
   (public_name exenum.internals)
-  (libraries (num))
+  (libraries (zarith))
   ))
   
 

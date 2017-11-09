@@ -4,8 +4,7 @@ B ../../_build/default/src/lwt
 FLG -open Exenum_lwt -w -40
 PKG bytes
 PKG lwt
-PKG num
-PKG num.core
 PKG result
+PKG zarith
 S ..
 S ../internals

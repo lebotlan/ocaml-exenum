@@ -8,10 +8,10 @@ open Convenience
  * The depth is roughly the number of constructors. *)
 type 'a part = {
     (* Cardinal of this part. *)
-    p_cardinal : Big_int.big_int ;
+    p_cardinal : Z.t ;
     
     (* Compute the element corresponding to the given index. *)
-    compute : (Big_int.big_int -> 'a) ;
+    compute : (Z.t -> 'a) ;
   }
 
 let get_cardinal p = p.p_cardinal
@@ -60,7 +60,7 @@ let rec standard_compute_union_aux partlist index =
       (* Index is out of part list. Cannot happen. *)
       assert false
   | p :: ps ->
-      if p.p_cardinal <== index then standard_compute_union_aux ps (index -- p.p_cardinal)
+      if p.p_cardinal <= index then standard_compute_union_aux ps (index -- p.p_cardinal)
       else (p, index)
 
 (* Disjoint union of these parts. *)
@@ -100,7 +100,8 @@ let standard_compute_product_aux parts =
 (* Cartesian product of these parts. 
  * Caution! compute returns a (product) value in the reversed order of the part list. *)
 let product_parts parts =
-  
+
+  assert (parts <> []) ;
   let whichindexes = standard_compute_product_aux parts in
 
   let compute index =
@@ -110,7 +111,8 @@ let product_parts parts =
   in
 
   let p_cardinal = myfold parts bigone (fun acu p -> acu ** p.p_cardinal) in
-
+  (* Note: p_cardinal can be = 0, if one part has size 0 (this can happen if one enumeration is finite). *)
+  
   (* The cardinal of the product it the product of cardinals. *)
   let pre_result = 
     { p_cardinal ;

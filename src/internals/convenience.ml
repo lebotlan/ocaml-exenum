@@ -9,35 +9,34 @@ let sep map sp l = List.fold_left (fun acu x -> if acu = "" then map x else acu 
 
 
 
-(*******************  Shortcuts to BIG INT  ***********************)
-open Big_int
+(*******************  Shortcuts to Zarith  ***********************)
 
-let (++) = add_big_int
-let (+++) = add_int_big_int
-let succ = succ_big_int
+let (++) = Z.add
+let (+++) b i = b ++ (Z.of_int i)
+let succ = Z.succ
 
-let (--) = sub_big_int
-let minus = minus_big_int
+let (--) = Z.sub
+let minus = Z.neg
 
-let ( ** ) = mult_big_int
-let ( **. ) = mult_int_big_int
-let quomod = quomod_big_int
-let bigmod = mod_big_int
+let ( *^ ) i j = let open Z in (Z.of_int i) ** j
 
-let ( *^ ) = power_int_positive_int 
+let ( ** ) = Z.mul
+let ( **. ) i b = (Z.of_int i) ** b
 
-let sign = sign_big_int
-let (<==) = le_big_int
-let big_compare = compare_big_int
+let quomod = Z.div_rem
+let bigmod a b = Z.rem a b
 
-let bigzero = zero_big_int
-let bigone  = unit_big_int
+let sign = Z.sign
+let big_compare = Z.compare
 
-let is_bigone x = big_compare x bigone = 0
+let bigzero = Z.zero
+let bigone  = Z.one
 
-let sob = string_of_big_int
-let bos = big_int_of_string
+let is_bigone x = Z.compare x bigone = 0
 
-let boi = big_int_of_int
-let iob = int_of_big_int
+let sob = Z.to_string
+let bos = Z.of_string
+
+let boi = Z.of_int
+let iob = Z.to_int
 

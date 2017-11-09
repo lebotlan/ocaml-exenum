@@ -38,7 +38,7 @@ let () =
 
   for i = 0 to 15 do
 
-    let index = i +++ start in
+    let index = start +++ i in
     let term = get e_term index in
     Printf.printf "Term #%s is %s\n" (sob index) (to_string term) ;
   done ;

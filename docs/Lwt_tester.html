@@ -11,8 +11,7 @@
 <link title="Index of values" rel=Appendix href="index_values.html">
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Exenum" rel="Chapter" href="Exenum.html">
-<link title="Lwt_tester" rel="Chapter" href="Lwt_tester.html"><link title="Lwt version of Exenum.tester " rel="Section" href="#2_LwtversionofExenumtester">
-<title>Lwt_tester</title>
+<link title="Lwt_tester" rel="Chapter" href="Lwt_tester.html"><title>Lwt_tester</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Exenum.html" title="Exenum">Previous</a>
@@ -24,10 +23,8 @@
 <h2 id="2_LwtversionofExenumtester">Lwt version of Exenum.tester </h2><br>
 </div>
 <hr width="100%">
-<br>
-<h2 id="2_LwtversionofExenumtester">Lwt version of Exenum.tester </h2><br>
 
-<pre><span id="VALtester"><span class="keyword">val</span> tester</span> : <code class="type">'a <a href="Exenum.html#TYPEt">Exenum.t</a> -><br>       ?from:Big_int.big_int -><br>       ?upto:Big_int.big_int -><br>       ?verbose_period:int -><br>       ?tos:('a -> string) -> len:int -> ('a -> unit Lwt.t) -> unit Lwt.t</code></pre><div class="info ">
+<pre><span id="VALtester"><span class="keyword">val</span> tester</span> : <code class="type">'a <a href="Exenum.html#TYPEt">Exenum.t</a> -><br>       ?from:Z.t -><br>       ?upto:Z.t -><br>       ?verbose_period:int -><br>       ?tos:('a -> string) -> len:int -> ('a -> unit Lwt.t) -> unit Lwt.t</code></pre><div class="info ">
 Note that <code class="code">tester</code> does not comply with non-lwt exceptions: some exceptions may get lost.<br>
 </div>
 <div class="param_info"><code class="code">upto</code> : By default, the tests go on forever.</div>

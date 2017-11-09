@@ -1,7 +1,7 @@
 
 type 'a part = {
-  p_cardinal : Big_int.big_int;
-  compute : Big_int.big_int -> 'a;
+  p_cardinal : Z.t ;
+  compute : Z.t -> 'a ;
 }
 
 val empty_part : 'a part

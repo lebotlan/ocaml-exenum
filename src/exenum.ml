@@ -149,7 +149,7 @@ let e_option exen = union [single None ; map exen (fun x -> Some x)]
 
 let bigshow exen to_string n1 n2 =
   for i = 0 to n2 - 1 do
-    let index = i +++ n1 in
+    let index = n1 +++ i in
     Printf.printf "Value #%d is %s\n" i (to_string (get exen index)) ;
   done ;
   ()

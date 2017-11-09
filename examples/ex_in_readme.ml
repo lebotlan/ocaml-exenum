@@ -10,7 +10,7 @@ let string_of_intlist l = "[" ^ String.concat ", " (List.map string_of_int l) ^ 
 let () = show enum_intlist string_of_intlist 0 11
 
 (* Show values at a large index. *)
-let index = Big_int.power_int_positive_int 10 200 (* Indeed, this is 10^200. *)
+let index = Z.pow (Z.of_int 10) 200 (* Indeed, this is 10^200. *)
 let () = bigshow enum_intlist string_of_intlist index 2
 
 

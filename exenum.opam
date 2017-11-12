@@ -1,7 +1,7 @@
 opam-version: "1.2"
 
 name: "exenum"
-version: "0.82"
+version: "0.84"
 
 author: "Didier Le Botlan <github.lebotlan@dfgh.net>"
 maintainer: "Didier Le Botlan <github.lebotlan@dfgh.net>"
@@ -15,6 +15,7 @@ license: "MIT License"
 depends: [
          "ocamlfind"
          "jbuilder"
+         "zarith"
          ]
 
 depopts: [

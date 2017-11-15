@@ -1,4 +1,5 @@
 Build efficient enumerations for datatypes. Inspired by Feat for Haskell.
+
 The exenum library offers constructors to build enumerations for
 datatypes, that is, functions from (arbitrarily large) integers to
 values. Such enumerations are typically used for unit testing. The

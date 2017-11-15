@@ -13,7 +13,6 @@ dev-repo: "git://github.com/lebotlan/ocaml-exenum.git"
 license: "MIT License"
 
 depends: [
-         "ocamlfind"
          "jbuilder"
          "zarith"
          ]
@@ -21,5 +20,7 @@ depends: [
 depopts: [
           "lwt"
           ]
+
+available: [ ocaml-version >= "4.02.3" ]
 
 build: [["jbuilder" "build" "-p" name "-j" jobs]]

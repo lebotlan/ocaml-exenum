@@ -1,3 +1,0 @@
-B ../../_build/default/src/internals
-FLG -open Exenum_internals -w -40
-PKG zarith

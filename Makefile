@@ -1,28 +1,33 @@
-.PHONY: all tests clean doc build examples
+.PHONY: all tests clean doc build examples install
 
 build:
-	jbuilder build
+	dune build
 
 all:	build examples tests doc
 
 
 examples:
-	jbuilder build @examples/examples
+	dune build @examples/examples
+	ln -fs _build/default/examples/*.exe .
+
+tests:
+	dune build @test/tests
+	ln -fs _build/default/test/*.exe .
 
 clean:
 	find -L . -name "*~" -delete
-	jbuilder clean
+	dune clean
+	rm -f *.exe
 	rm -rf docs/*
 
-tests:
-	jbuilder build @test/tests
+
+#doc:	build
+#	ocamlfind ocamldoc -package lwt -package zarith -html -d docs _build/default/src/exenum.mli _build/default/src/lwt/lwt_tester.mli -I _build/default/src/internals/ -I _build/default/src
+#	cp style/style.css docs/
 
 doc:	build
-	ocamlfind ocamldoc -package lwt -package zarith -html -d docs _build/default/src/exenum.mli _build/default/src/lwt/lwt_tester.mli -I _build/default/src/internals/ -I _build/default/src
-	cp style/style.css docs/
+	dune build @doc
+	rm -rf docs/*
+	cp -R _build/default/_doc/_html/* docs/
+	cp style/style.css docs/odoc.css
 
-# I do not use odoc yet, because it does not create an index page with both exenum AND exenum.lwt. I will not write it by hand.
-#
-#doc:	build
-#	jbuilder build @doc
-#	cp -R _build/default/_doc/* docs/

@@ -1,3 +1,6 @@
+===== 0.86 (2018-08-10) ====
+  * Switched from jbuilder to dune
+
 ===== 0.84 (2017-11-12) =====
   * Don't use the legacy Num library (Big_int) any longer. Switched to Zarith.
 

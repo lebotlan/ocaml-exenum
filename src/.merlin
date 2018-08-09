@@ -1,5 +1,0 @@
-B ../_build/default/src
-B ../_build/default/src/internals
-FLG -w -40
-PKG zarith
-S internals

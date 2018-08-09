@@ -1,5 +1,3 @@
-open Exenum_internals.Convenience
-
 (* 'Categories' (as in Youtube, not immediately related to categories as in Haskell)
  *
  * Used ONLY for the surjectivity test.

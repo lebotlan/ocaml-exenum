@@ -21,6 +21,9 @@ let get_cardinal p = p.p_cardinal
 type mode = Standard | Shuffled
 let mode = Shuffled
 
+(* Suppress warning. *)
+let _ = Standard
+
 let shuffle part =
   match mode with
   | Standard -> part

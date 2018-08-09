@@ -13,7 +13,7 @@ let compute_shuffle card compute =
   (* Z doc says bigints can be compared using >  *)
   if card = Z.zero then
     (* The part is empty. *)
-    (fun index -> assert false) (* Should not be invoked. *)
+    (fun _ -> assert false) (* Should not be invoked. *)
       
   else
   

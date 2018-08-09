@@ -108,7 +108,6 @@ let interval_part a b =
 let e_interval a b = from_single_part (lazy (Printf.sprintf "[%d-%d]" a b)) (interval_part a b)
 
 let bmax_int = boi max_int
-let bmin_int = boi min_int
 
 let toint b = try iob (bigmod b bmax_int) with _ -> 0
 

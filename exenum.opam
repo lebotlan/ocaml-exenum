@@ -1,7 +1,7 @@
 opam-version: "1.2"
 
 name: "exenum"
-version: "0.84"
+version: "0.86"
 
 author: "Didier Le Botlan <github.lebotlan@dfgh.net>"
 maintainer: "Didier Le Botlan <github.lebotlan@dfgh.net>"
@@ -13,7 +13,7 @@ dev-repo: "git://github.com/lebotlan/ocaml-exenum.git"
 license: "MIT License"
 
 depends: [
-         "jbuilder"
+         "dune"
          "zarith"
          ]
 
@@ -23,4 +23,7 @@ depopts: [
 
 available: [ ocaml-version >= "4.02.3" ]
 
-build: [["jbuilder" "build" "-p" name "-j" jobs]]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]

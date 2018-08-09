@@ -202,7 +202,7 @@ let rec prod_cardinals acu = function
       begin match (exen.cardinal, acu) with
       | None, _ -> prod_cardinals None exens
       | (Some z,_) when z = bigzero -> Some bigzero
-      | Some n, None -> prod_cardinals None exens
+      | Some _, None -> prod_cardinals None exens
       | Some n, Some k -> prod_cardinals (Some (n ** k)) exens
       end
 

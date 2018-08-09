@@ -1,6 +1,9 @@
 open Exenum
 open Exenum_internals.Convenience
 
+(* The tests succeeds if it does not fail. *)
+
+
 (* Test injectivity:
  * Two differents indices lead to two different values. 
  * Quite easy to check, using ocaml polymorphic comparison. *)

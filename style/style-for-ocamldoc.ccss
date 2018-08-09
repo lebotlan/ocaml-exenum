@@ -167,6 +167,11 @@ span.keyword {
   color: #FF3333 ;
 }
 
+span.parameter {
+  font-style: italic ;
+  color: #666 ;  
+}
+
 a {
   text-decoration: none ;
 }

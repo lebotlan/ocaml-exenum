@@ -24,6 +24,10 @@ a:hover {
     color: red ;
 }
 
+a:visited {
+    color: purple ;
+}
+
 
 NavBackground: #FF8000 ;
 NavColor: #884400 ;
@@ -136,6 +140,11 @@ ul.at-tag > li:before {
 span.keyword { 
     font-weight: bold ; 
     color: #FF3333 ;
+}
+
+h1 span.keyword, h1 span.module-path {
+    font-weight: inherit ;
+    color: inherit ;
 }
 
 span.module-path {

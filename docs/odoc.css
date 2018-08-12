@@ -17,6 +17,11 @@ a:hover
 	color: red;
 	}
 
+a:visited
+	{
+	color: purple;
+	}
+
 h2
 	{
 	font-family: "Helvetica Neue", "Helvetica", "Arial", "Geneva", sans-serif;
@@ -120,6 +125,12 @@ span.keyword
 	{
 	font-weight: bold;
 	color: #FF3333;
+	}
+
+h1 span.keyword, h1 span.module-path
+	{
+	font-weight: inherit;
+	color: inherit;
 	}
 
 span.module-path

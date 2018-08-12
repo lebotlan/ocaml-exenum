@@ -1,7 +1,7 @@
 {2 Library exenum}
-Main library : {!module-Exenum}.
+Main module: {!module-Exenum}.
 
 {2 Library exenum.lwt}
-Optional library : {!module-Exenum_lwt} provides a lwt-compliant tester.
+Optional library: {!module-Exenum_lwt} provides a lwt-compliant tester.
 
 

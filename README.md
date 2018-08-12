@@ -16,7 +16,7 @@ See also the examples/ dir.
 The ocamlfind package names are `exenum` and `exenum.lwt` (the latter is installed only if lwt is present).
 
 When using exenum.lwt, you need to compile with the following packages (in ocamlbuild's _tag notation):
-`package(lwt,lwt.unix,exenum,exenum.lwt,lwt.ppx)`
+`package(lwt,exenum,exenum.lwt,lwt.ppx)`
 
 
 ## Overview
